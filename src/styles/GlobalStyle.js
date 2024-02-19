@@ -1,5 +1,5 @@
 import {createGlobalStyle} from "styled-components";
-import reg from "../assets/fonts/Syne/Syne-Regular"
+import reg from "../assets/fonts/Syne/Syne-Regular.ttf"
 
 export const GlobalStyle = createGlobalStyle`
 *,*::before,*::after{
