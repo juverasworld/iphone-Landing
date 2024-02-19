@@ -49,8 +49,8 @@ body{
   --blueRgba:"0, 113, 227";
 
   //fonts
-  --fontL: "Source Sans Pro light";
-  --fontR: "Source Sans Pro";
+  --fontL: "Syne Regular";
+  --fontR: "Syne Regular";
   
   // gradient
   --gradient: #35c3f3 0%, #8b9fe8 20%, #e681d8 39%, #ffa9a4 76%, #fed2ce 100%;
