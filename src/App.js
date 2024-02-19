@@ -4,6 +4,8 @@ import { GlobalStyle } from './styles/GlobalStyle';
 import Quotes from './sections/Quotes';
 import HeroSection from './sections/HeroSection';
 import PhoneModel from './sections/PhoneModel';
+import DesignSection from './sections/DesignSection';
+import DisplaySection from './sections/DisplaySection';
 
 function App() {
   return (
@@ -13,6 +15,8 @@ function App() {
   <Quotes/>
   {/* <PhoneModel/> */}
   <HeroSection/>
+  <DesignSection/>
+  <DisplaySection/>
   </>
    
   );

@@ -46,6 +46,7 @@ export default function Model({ ...props }) {
             start: "top+=200 top",
             endTrigger: "#battery",
             end: "top top",
+            
             scrub: 1,
             // markers: true,
           },
