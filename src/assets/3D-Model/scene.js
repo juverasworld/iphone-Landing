@@ -8,7 +8,7 @@ title: Apple iPhone 13 Pro Max
 
 import React, { useRef, useLayoutEffect } from "react";
 import { useGLTF } from "@react-three/drei";
-import gsap from "gsap";
+import  gsap  from "gsap";
 import { useThree } from "@react-three/fiber";
 
 export default function Model({ ...props }) {
@@ -24,61 +24,53 @@ export default function Model({ ...props }) {
 
     let fov = camera.fov;
 
-    fov = (1400 * 18)/ window.innerWidth;
+    fov = (1400 * 18) / window.innerWidth;
     camera.fov = fov;
     camera.updateProjectionMatrix();
 
-
-
-
     let mm = gsap.matchMedia();
-  
-mm.add({
 
-  // set up any number of arbitrarily-named conditions. The function below will be called when ANY of them match.
-  isDesktop: `(min-width: 48em)`,
-  isMobile: `(max-width:48em`,
-  
+    mm.add(
+      {
+        // set up any number of arbitrarily-named conditions. The function below will be called when ANY of them match.
+        isDesktop: `(min-width: 48em)`,
+        isMobile: `(max-width:48em`,
+      },
+      (context) => {
+        // context.conditions has a boolean property for each condition defined above indicating if it's matched or not.
+        let { isDesktop, isMobile } = context.conditions;
 
-}, (context) => {
+        let t1 = gsap.timeline({
+          scrollTrigger: {
+            trigger: "#phone-model",
+            start: "top+=200 top",
+            endTrigger: "#battery",
+            end: "top top",
+            scrub: 1,
+            // markers: true,
+          },
+        });
 
-  // context.conditions has a boolean property for each condition defined above indicating if it's matched or not.
-  let { isDesktop, isMobile } = context.conditions;
+        t1.fromTo(camera.position, { y: 2 }, { y: 0 })
+          .to(scene.rotation, { y: 0.8 })
+          .to(scene.rotation, { y: 3 })
+          .to(scene.rotation, { z: 1.58 }, "key1")
+          .to(camera.position, { z: 4 }, "key1")
+          .to(scene.rotation, { y: 0, z: 0 }, "key2")
+          .to(camera.position, { z: 6, x: isDesktop ? -1 : 0 }, "key2")
+          .to(scene.rotation, { z: 0, y: 6.3 }, "key3")
+          .to(camera.position, { x: isDesktop ? 0.8 : 0, y: 0 }, "key3");
 
-  let t1 = gsap.timeline({
-    scrollTrigger: {
-      trigger: "#phone-model",
-      start: "top+=200 top",
-      endTrigger: "#battery",
-      end: "top top",
-      scrub: 1,
-      // markers: true,
-    },
-  });
-
-  t1.fromTo(camera.position, { y: 2 }, { y: 0 })
-        .to(scene.rotation, { y: 0.8 })
-        .to(scene.rotation, { y: 3 })
-        .to(scene.rotation, { z: 1.58 }, "key1")
-        .to(camera.position, { z: 4 }, "key1")
-        .to(scene.rotation, { y: 0, z: 0 }, "key2")
-        .to(camera.position, { z: 6, x: isDesktop ? -1 : 0  }, "key2")
-        .to(scene.rotation, { z: 0, y: 6.3 }, "key3")
-        .to(camera.position, { x: isDesktop ? 0.8 : 0, y: 0 }, "key3");
-
-
-        if(isMobile){
+        if (isMobile) {
           camera.fov = 20;
-    camera.updateProjectionMatrix();
+          camera.updateProjectionMatrix();
         }
 
-  return () => { 
-    if(t1) t1.kill();
-  }
-}); 
-
-      
-        
+        return () => {
+          if (t1) t1.kill();
+        };
+      }
+    );
   }, []);
 
   return (
