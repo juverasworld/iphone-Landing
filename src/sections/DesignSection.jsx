@@ -61,7 +61,7 @@ let t1 = gsap.timeline({
         start:"top-=500 top",
         end:" bottom top",
         // markers:true,
-        scrub: true,
+        // scrub: true,
     }
 }).fromTo(textOne.current, {x:0}, {x:"10%"}, "key1").fromTo(textTwo.current, {x:0}, {x:"-10%"}, "key1")
   
