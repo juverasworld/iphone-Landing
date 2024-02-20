@@ -1,9 +1,14 @@
 import { useGLTF } from "@react-three/drei";
 import gsap from "gsap";
 import React from "react";
+import { Suspense } from "react";
 import { useRef, useLayoutEffect } from "react";
+import { Canvas } from "react-three-fiber";
 import styled from "styled-components";
 import { RectAreaLight } from "three";
+import Model2 from "../components/Scene2";
+import { Environment } from "@react-three/drei";
+
 
 const Section = styled.section`
   width: 100vw;
@@ -136,7 +141,20 @@ materials.Body.color.set(color);
     <Section ref={sectionRef}>
       <Left ref={leftRef} />
       <Center ref={textRef}/>
-      <Right ref={rightRef} />
+      <Right ref={rightRef}>
+      <Canvas camera={{ fov: 6.5 }}>
+        <ambientLight intensity={1.25} />
+        <directionalLight intensity={0.4} />
+        <Suspense fallback={null}>
+          <Model2 />
+        </Suspense>
+
+        <Environment preset="night" />
+
+        {/* <OrbitControls /> */}
+      </Canvas>
+
+      </Right>
     </Section>
   );
 };
