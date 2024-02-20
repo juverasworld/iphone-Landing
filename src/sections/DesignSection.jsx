@@ -22,6 +22,7 @@ const TextContainer = styled.p`
   flex-direction: column;
   justify-content: center;
   align-items: flex-start;
+  color: var(--dark);
 
   span {
     font-size: var(--fontBig);
@@ -29,16 +30,16 @@ const TextContainer = styled.p`
     font-weight: 600;
     text-transform: capitalize;
   }
-  color: var(--dark);
 `;
 const TextContainer2 = styled.p`
   width: 100%;
   height: 50vh;
-  z-index: 1;
+
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: flex-end;
+  color: var(--dark);
 
   span {
     width: 80%;
@@ -47,29 +48,30 @@ const TextContainer2 = styled.p`
 
     font-size: var(--fontxxxl);
   }
-  color: var(--dark);
 `;
 const DesignSection = () => {
   const container = useRef(null);
   const textOne = useRef(null);
   const textTwo = useRef(null);
- 
+
   useLayoutEffect(() => {
-let t1 = gsap.timeline({
-    scrollTrigger:{
-        trigger: container.current,
-        start:"top-=500 top",
-        end:" bottom top",
-        // markers:true,
-        // scrub: true,
-    }
-}).fromTo(textOne.current, {x:0}, {x:"10%"}, "key1").fromTo(textTwo.current, {x:0}, {x:"-10%"}, "key1")
-  
+    let t1 = gsap
+      .timeline({
+        scrollTrigger: {
+          trigger: container.current,
+          start: "top-=500 top",
+          end: " bottom top",
+          // markers:true,
+          scrub: true,
+        },
+      })
+      .fromTo(textOne.current, { x: 0 }, { x: "10%" }, "key1")
+      .fromTo(textTwo.current, { x: 0 }, { x: "-10%" }, "key1");
+
     return () => {
-        if(t1) t1.kill()
-     
+      if (t1) t1.kill();
     };
-  }, [])
+  }, []);
   return (
     <Section ref={container}>
       <TextContainer ref={textOne}>
