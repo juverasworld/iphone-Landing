@@ -45,7 +45,7 @@ export default function Model({ ...props }) {
             trigger: "#phone-model",
             start: "top+=200 top",
             endTrigger: "#battery",
-            end: "top top",
+            end: "top top", 
             
             scrub: 1,
             // markers: true,

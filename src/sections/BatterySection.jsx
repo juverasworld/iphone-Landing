@@ -59,7 +59,7 @@ const BatterySection = () => {
           start: "top center",
           end: "bottom center",
           scrub: true,
-          markers:true,
+          // markers:true,
         },
 
         opacity:1,
@@ -69,7 +69,7 @@ const BatterySection = () => {
     return () => {};
   }, []);
   return (
-    <Section>
+    <Section id="battery">
       <Title>Go all day with single charge...</Title>
       <Battery ref={battery}>
         <li />
