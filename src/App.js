@@ -10,6 +10,7 @@ import { ProcessorSection } from './sections/ProcessorSection';
 import BatterySection from './sections/BatterySection';
 import ColorSection from './sections/ColorSection';
 import CameraSection from './sections/CameraSection';
+import PricingSection from './sections/PricingSection';
 
 function App() {
   return (
@@ -25,6 +26,7 @@ function App() {
   <BatterySection/>
   <ColorSection/>
   <CameraSection/>
+  <PricingSection/>
   </>
    
   );
